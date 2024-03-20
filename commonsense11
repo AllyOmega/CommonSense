@@ -1,0 +1,56 @@
+import random as rd
+
+def totalChar(strings):
+    
+
+    if len(strings) == 0:
+        return 0
+
+    else:
+        return len(strings[0]) + totalChar(strings[1:])
+
+
+
+def evenNum(nums):
+
+    if len(nums) == 0: 
+        return []
+
+    if nums[0] % 2 == 0:
+        return [nums[0]] + evenNum(nums[1:])
+    else:
+        return evenNum(nums[1:])
+
+def triNum(n):
+
+    if n == 1:
+        return 1
+    
+    return n + triNum(n - 1)
+
+def firstIndex(xString):
+
+    if xString[0] == 'x':
+        return 0
+    else:
+        return firstIndex(xString[1:]) + 1
+
+def UniquePaths(r, c):
+
+    if r == 1 or c == 1:
+        return 1
+
+    return UniquePaths(r, c - 1) + UniquePaths(r - 1, c)
+
+
+# print(totalChar(["ab", "c", "def", "", "ghija"]))
+
+# array = [rd.choice(range(100)) for _ in range(10)]
+# print(array)
+# print(evenNum(array))
+
+#print(triNum(7))
+    
+#print(firstIndex("abcdefghijklmnopqrstuvwxyz"))
+
+print(UniquePaths(7,3))

@@ -1,0 +1,41 @@
+import random as rd
+
+#1
+
+
+def add_until_array(array):
+    if len(array) == 0:
+        return 0
+    val = add_until_array(array[1:])
+    if array[0] + val > 100:
+        return add_until_array(array[1:])
+    else:
+        return array[0] + val
+
+# array = [rd.choice(range(100)) for _ in range(10)]
+# print(array)
+# print(add_until_array(array))
+
+#2
+
+def golomb(n, memo={}):
+    if n == 1: return 1
+    if n not in memo: 
+        return 1 + golomb(n - golomb(golomb(n - 1)))
+    return memo[n]
+    
+
+# for i in range(1,10):
+#     print(golomb(i))
+
+#3
+def unique_paths(rows, columns, memo = {}):
+    if rows == 1 or columns == 1: return 1
+
+    if tuple([rows, columns]) not in memo:
+
+        return unique_paths(rows -1, columns) + unique_paths(rows, columns - 1)
+    
+    return memo[tuple([rows, columns])]
+
+print(unique_paths(7,3))
